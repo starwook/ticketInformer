@@ -6,7 +6,7 @@ plugins {
 
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
+sourceCompatibility = '1.8'
 
 repositories {
 	mavenCentral()
@@ -33,4 +33,11 @@ dependencies {
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+sourceSets {
+	main {
+		resources {
+			srcDirs("src/main/resources")
+		}
+	}
 }
