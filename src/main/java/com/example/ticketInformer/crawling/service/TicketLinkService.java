@@ -1,15 +1,15 @@
 package com.example.ticketInformer.crawling.service;
 
 
+import com.example.ticketInformer.Item.domain.Item;
+import com.example.ticketInformer.Item.service.ItemService;
 import com.example.ticketInformer.crawling.Selenium;
 import com.example.ticketInformer.crawling.domain.TicketLink;
 import com.example.ticketInformer.crawling.repository.TicketLinkRepository;
-import com.example.ticketInformer.user.service.MemberService;
 import groovy.util.logging.Slf4j;
 import lombok.RequiredArgsConstructor;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.openqa.selenium.WebDriver;
 import org.springframework.stereotype.Service;
@@ -22,9 +22,10 @@ import javax.annotation.PostConstruct;
 @Slf4j
 @RequiredArgsConstructor
 @Service
-public class TicketLinkCrawlerService  {
+public class TicketLinkService {
     private static final String urlTicketLink ="http://www.ticketlink.co.kr/ranking";
     private final TicketLinkRepository ticketLinkRepository;
+    private final ItemService itemService;
     @PostConstruct
     public void getTicketLinkRanking() {
         Selenium sel = new Selenium();
@@ -42,10 +43,11 @@ public class TicketLinkCrawlerService  {
                 Elements time = eachItemInfo.select("div>div>span");
                 System.out.println(name);
 
-                TicketLink ticketLink = new TicketLink(time.text(),name.text());
+                TicketLink ticketLink = new TicketLink(time.text(),name.text(),i);
+
                 ticketLinkRepository.save(ticketLink);
+                itemService.saveTicketLinkItem(ticketLink);
             }
-            
         }
         catch (Exception e){
             e.printStackTrace();
@@ -54,4 +56,5 @@ public class TicketLinkCrawlerService  {
             driver.close();
         }
     }
+
 }

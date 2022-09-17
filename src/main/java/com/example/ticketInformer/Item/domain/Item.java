@@ -16,8 +16,9 @@ public class Item {
     @Column(name = "item_id")
     private Long id;
 
-    private Long date;
-    private Long name;
+    private String date;
+    private String name;
+    private int rank;
 
     @Enumerated(EnumType.STRING)
     private ItemSource itemSource;
@@ -25,4 +26,13 @@ public class Item {
 
     @OneToMany(mappedBy = "item", cascade = CascadeType.ALL)
     private List<Basket> basketList = new ArrayList<>();
+    public Item(){
+
+    }
+    public Item( String name,String date, int rank, ItemSource itemSource) {
+        this.name = name;
+        this.date = date;
+        this.rank = rank;
+        this.itemSource = itemSource;
+    }
 }
