@@ -57,7 +57,6 @@ public class TicketLinkService {
                     }
                 }
             }
-
 //탑 5만 뽑기기
 //            String html = driver.getPageSource();
 //            Document doc = Jsoup.parse(html);

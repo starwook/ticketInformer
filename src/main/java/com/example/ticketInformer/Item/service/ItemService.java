@@ -12,6 +12,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 @Slf4j
 @RequiredArgsConstructor
@@ -30,5 +33,9 @@ public class ItemService {
     public void savePlayKfaItem(PlayKfa playKfa, ItemGenre itemGenre){
         Item item = new Item(playKfa.getName(), playKfa.getDate(),playKfa.getRank(), ItemSource.PLAYKFA,itemGenre);
         itemRepository.save(item);
+    }
+    public List<Item> getAllItems(){
+        List<Item> items = itemRepository.findAll();
+        return items;
     }
 }
