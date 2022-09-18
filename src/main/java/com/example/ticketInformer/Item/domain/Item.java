@@ -22,6 +22,8 @@ public class Item {
 
     @Enumerated(EnumType.STRING)
     private ItemSource itemSource;
+    @Enumerated(EnumType.STRING)
+    private ItemGenre itemGenre;
 
 
     @OneToMany(mappedBy = "item", cascade = CascadeType.ALL)
@@ -29,10 +31,18 @@ public class Item {
     public Item(){
 
     }
+    public Item( String name,String date, int rank, ItemSource itemSource,ItemGenre itemGenre) {
+        this.name = name;
+        this.date = date;
+        this.rank = rank;
+        this.itemSource = itemSource;
+        this.itemGenre =itemGenre;
+    }
     public Item( String name,String date, int rank, ItemSource itemSource) {
         this.name = name;
         this.date = date;
         this.rank = rank;
         this.itemSource = itemSource;
+
     }
 }
