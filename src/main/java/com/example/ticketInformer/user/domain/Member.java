@@ -1,7 +1,7 @@
 package com.example.ticketInformer.user.domain;
 
 import lombok.Getter;
-import com.example.ticketInformer.basket.domain.Basket;
+//import com.example.ticketInformer.basket.domain.Basket;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -15,7 +15,7 @@ public class Member {
     @Column(name = "member_id")
     private Long id;
 
-    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
-    private List<Basket> basketList = new ArrayList<>();
+//    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+//    private List<Basket> basketList = new ArrayList<>();
 
 }

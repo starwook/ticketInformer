@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body onload="showItems(itemList)">
+    <div th:id="container">
+        <header class="header">
+            <h1> Ticket Informer</h1>
+        </header>
+        <form>
+            <div id="itemList">
+
+            </div>
+        </form>
+    </div>
+    <script th:inline ="javascript">
+        /*<![CDATA[*/
+        let itemList = [[ ${ itemList }]];
+        /*]]*/
+    </script>
+    <script type="text/javascript" th:src="@{/js/func.js}"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</body>
+
+</html>

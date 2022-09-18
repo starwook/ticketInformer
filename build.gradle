@@ -29,15 +29,10 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
 	implementation 'org.jsoup:jsoup:1.13.1'
 	implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '4.1.1'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
 }
 
 tasks.named('test') {
 	useJUnitPlatform()
-}
-sourceSets {
-	main {
-		resources {
-			srcDirs("src/main/resources")
-		}
-	}
 }

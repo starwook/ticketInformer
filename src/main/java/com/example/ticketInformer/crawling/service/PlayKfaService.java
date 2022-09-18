@@ -35,13 +35,8 @@ public class PlayKfaService {
             driver.findElement(By.cssSelector("#loginPW")).sendKeys(password);
             driver.findElement(By.cssSelector("#form_login > button")).click();
             Thread.sleep(300);
-
             byWhatTeam(driver,"https://shop.playkfa.com/ticket/mennationalteam","  (남자국가대표)");
             byWhatTeam(driver,"https://shop.playkfa.com/ticket/menolympic", "  (남자올림픽대표)");
-
-
-
-
         }
         catch (Exception e){
             e.printStackTrace();
