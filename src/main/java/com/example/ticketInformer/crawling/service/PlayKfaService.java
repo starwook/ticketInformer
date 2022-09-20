@@ -58,12 +58,18 @@ public class PlayKfaService {
             String when = date.text()+" "+time.text();
             Elements homeTeam = e.select("dt[class=team home]");
             Elements awayTeam = e.select("dt[class=team away]");
+
+            //img Crawl
+            Elements imageElements = homeTeam.select("div[class=team-flag]");
+            String imageUrl = imageElements.attr("style");
+            imageUrl = imageUrl.substring(21,imageUrl.length()-2);
+            // name,period Crawl
+
             String name = homeTeam.text()+" VS "+awayTeam.text()+whatTeam;
             PlayKfa playKfa = new PlayKfa(name,when,0);
             playKfaRepository.save(playKfa);
             ItemGenre itemGenre = ItemGenre.SPORTS;
-            itemService.savePlayKfaItem(playKfa,itemGenre);
+            itemService.savePlayKfaItem(playKfa,itemGenre,imageUrl);
         }
-
     }
 }

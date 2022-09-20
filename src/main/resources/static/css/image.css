@@ -1,0 +1,19 @@
+img{
+    width: 120px;
+    height: 148px;
+    text-align: center;
+
+}
+li{
+    float:left;
+    width: 16%;
+    height:210px;
+    display: list-item;
+    margin: 1px;
+}
+section{
+    float:none;
+    display: block;
+    /*width:200px;*/
+    /*height:200px;*/
+}
