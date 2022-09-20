@@ -37,11 +37,15 @@ public class InterParkService {
                 Elements eachItemList = eachGenre.select("div[class= items]:nth-child(2)");
                 for(int j=1;j<=3;j++){
                     Elements eachItem = eachItemList.select("li:nth-child("+j+")");
+                    //img Crawl
+                    Elements imageElements = eachItem.select("a[class=prdImg]");
+                    String imageUrl = imageElements.select("img").attr("src");
+                    // name,period Crawl
                     String name = eachItem.select("a[class=prdName]").text();
                     String time = eachItem.select("a[class=prdDuration]").text();
                     InterPark interPark = new InterPark(name,time,j);
                     interParkRepository.save(interPark);
-                    itemService.saveInterParkItem(interPark, itemGenre);
+                    itemService.saveInterParkItem(interPark, itemGenre,imageUrl);
                 }
 
             }

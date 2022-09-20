@@ -1,52 +1,60 @@
 var genre =[0,0,0,0,0,0,0,0];
 function showItems(items){
+
     var itemList = document.querySelector("#itemList");
     var ticketLinkFlag = false;
     var playKfaFlag = false;
     var interParkFlag = false;
     for(let i=0;i<items.length;i++){
+        var newSection;
         if(items[i].itemSource.toString() == "TICKETLINK"){
             if(!ticketLinkFlag){
+                newSection =document.createElement("section");
                 var newHeader =document.createElement("h2");
                 newHeader.append(document.createTextNode("TICKETLINK"));
-                itemList.appendChild(newHeader);
+                newSection.appendChild(newHeader);
+                itemList.appendChild(newSection);
                 ticketLinkFlag = true;
                 genre.fill(0);
             }
-            if(genreFlag(items[i].itemGenre.toString())){
-                var newGenre = document.createElement("h3");
-                newGenre.appendChild(document.createTextNode(items[i].itemGenre.toString()));
-                itemList.appendChild(newGenre);
-            }
+            // if(genreFlag(items[i].itemGenre.toString())){
+            //     var newGenre = document.createElement("h3");
+            //     newGenre.appendChild(document.createTextNode(items[i].itemGenre.toString()));
+            //     newSection.appendChild(newGenre);
+            // }
         }
         if(items[i].itemSource.toString() == "PLAYKFA"){
 
             if(!playKfaFlag){
+                newSection =document.createElement("section");
                 var newHeader =document.createElement("h2");
                 newHeader.append(document.createTextNode("PLAYKFA"));
-                itemList.appendChild(newHeader);
+                newSection.appendChild(newHeader);
+                itemList.appendChild(newSection);
                 playKfaFlag = true;
                 genre.fill(0);
             }
-            if(genreFlag(items[i].itemGenre.toString())){
-                var newGenre = document.createElement("h3");
-                newGenre.appendChild(document.createTextNode(items[i].itemGenre.toString()));
-                itemList.appendChild(newGenre);
-            }
+            // if(genreFlag(items[i].itemGenre.toString())){
+            //     var newGenre = document.createElement("h3");
+            //     newGenre.appendChild(document.createTextNode(items[i].itemGenre.toString()));
+            //     itemList.appendChild(newGenre);
+            // }
         }
         if(items[i].itemSource.toString() == "INTERPARK"){
             if(!interParkFlag){
+                newSection =document.createElement("section");
                 var newHeader =document.createElement("h2");
                 newHeader.append(document.createTextNode("INTERPARK"));
-                itemList.appendChild(newHeader);
+                newSection.appendChild(newHeader);
+                itemList.appendChild(newSection);
                 interParkFlag = true;
                 genre.fill(0);
             }
-            if(genreFlag(items[i].itemGenre.toString())){
-                var newGenre = document.createElement("h3");
-                newGenre.appendChild(document.createTextNode(items[i].itemGenre.toString()));
-                itemList.appendChild(newGenre);
-            }
+            // if(genreFlag(items[i].itemGenre.toString())){
+            //     var newGenre = document.createElement("h3");
+            //     newGenre.appendChild(document.createTextNode(items[i].itemGenre.toString()));
+            //     itemList.appendChild(newGenre);
+            // }
         }
         var itemName = JSON.stringify(items[i].name);
         var itemTime = JSON.stringify(items[i].date);
@@ -55,14 +63,22 @@ function showItems(items){
         itemTime = itemTime.replace(/\"/g," ");
         console.log(itemName);
         var newList = document.createElement("li");
+        var imageTag = document.createElement("img");
+        imageTag.src = items[i].imgUrl;
+
         newList.style.listStyle ="none";
 
         if(itemRank !=0){
             newList.appendChild(document.createTextNode(itemRank));
         }
+        console.log(items[i].imgUrl);
+        newList.appendChild(imageTag);
+        newList.appendChild(document.createElement("br"));
         newList.appendChild(document.createTextNode(itemName));
+        newList.appendChild(document.createElement("br"));
         newList.appendChild(document.createTextNode(itemTime));
-        itemList.appendChild(newList);
+        newSection.appendChild(newList);
+
 
     }
 

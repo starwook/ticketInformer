@@ -26,6 +26,7 @@ import java.util.concurrent.TimeUnit;
 @Service
 public class TicketLinkService {
     private static final String urlTicketLink ="http://www.ticketlink.co.kr/ranking";
+    private static final String urlImageDir = "../resources/static/image";
     private final TicketLinkRepository ticketLinkRepository;
     private final ItemService itemService;
 
@@ -40,39 +41,26 @@ public class TicketLinkService {
                 WebElement eachButton = eachGenre.findElement(By.cssSelector("button"));
                 System.out.println(eachButton.getText());
                 eachButton.click();
-                Thread.sleep(300);
-
+                Thread.sleep(500);
                 String html = driver.getPageSource();
                 Document doc = Jsoup.parse(html);
                 Elements elements = doc.select("#content > section.common_section.section_ranking_detail > div.ranking_product > table > tbody");
                 for(int j=1;j<=3;j++){
                     Elements eachItem = elements.select("tr:nth-child("+j+")");
+                    //img Crawl
+                    Elements imageElements = eachItem.select("img[class=ranking_product_img]");
+                    String imageUrl = imageElements.attr("src");
+                    // name,period Crawl
                     String name = eachItem.select("span[class=ranking_product_title]").text();
                     String time = eachItem.select("span[class=ranking_product_period]").text();
                     if(!name.isEmpty()){
                         TicketLink ticketLink = new TicketLink(time,name,j);
                         ticketLinkRepository.save(ticketLink);
                         ItemGenre itemGenre =reItemGenre(i);
-                        itemService.saveTicketLinkItem(ticketLink,itemGenre);
+                        itemService.saveTicketLinkItem(ticketLink,itemGenre,imageUrl);
                     }
                 }
             }
-//탑 5만 뽑기기
-//            String html = driver.getPageSource();
-//            Document doc = Jsoup.parse(html);
-//            Elements elements = doc.select("#content > section.common_section.section_ranking_weekly > div.common_inner > div.product_grid > ul");
-//            for(int i=1;i<=5;i++){
-//                Elements eachItem = elements.select("li:nth-child("+i+")");
-//                Elements eachItemInfo = eachItem.select("div>a>div:nth-child(2)");
-//                Elements name = eachItemInfo.select("span[class = product_title]");
-//                Elements time = eachItemInfo.select("div>div>span");
-//                System.out.println(name);
-//
-//                TicketLink ticketLink = new TicketLink(time.text(),name.text(),i);
-//
-//                ticketLinkRepository.save(ticketLink);
-//                itemService.saveTicketLinkItem(ticketLink);
-//            }
         }
         catch (Exception e){
             e.printStackTrace();

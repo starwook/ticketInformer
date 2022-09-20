@@ -19,14 +19,23 @@ public class Item {
     private String date;
     private String name;
     private int rank;
+    private String imgUrl;
 
     @Enumerated(EnumType.STRING)
     private ItemSource itemSource;
     @Enumerated(EnumType.STRING)
     private ItemGenre itemGenre;
 
+    public Item(String date, String name, int rank,  ItemSource itemSource, ItemGenre itemGenre,String imgUrl) {
+        this.date = date;
+        this.name = name;
+        this.rank = rank;
+        this.imgUrl = imgUrl;
+        this.itemSource = itemSource;
+        this.itemGenre = itemGenre;
+    }
 
-//    @OneToMany(mappedBy = "item", cascade = CascadeType.ALL)
+    //    @OneToMany(mappedBy = "item", cascade = CascadeType.ALL)
 //    private List<Basket> basketList = new ArrayList<>();
     public Item(){
 

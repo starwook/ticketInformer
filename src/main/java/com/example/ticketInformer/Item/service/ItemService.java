@@ -22,16 +22,16 @@ public class ItemService {
 
     private final ItemRepository itemRepository;
 
-    public void saveTicketLinkItem(TicketLink ticketLink,ItemGenre itemGenre){
-        Item item = new Item(ticketLink.getName(), ticketLink.getDate(),ticketLink.getRank(), ItemSource.TICKETLINK,itemGenre);
+    public void saveTicketLinkItem(TicketLink ticketLink,ItemGenre itemGenre,String imageUrl){
+        Item item = new Item(ticketLink.getName(), ticketLink.getDate(),ticketLink.getRank(), ItemSource.TICKETLINK,itemGenre,imageUrl);
         itemRepository.save(item);
     }
-    public void saveInterParkItem(InterPark interPark, ItemGenre itemGenre){
-        Item item = new Item(interPark.getName(), interPark.getDate(),interPark.getRank(), ItemSource.INTERPARK,itemGenre);
+    public void saveInterParkItem(InterPark interPark, ItemGenre itemGenre,String imageUrl){
+        Item item = new Item(interPark.getName(), interPark.getDate(),interPark.getRank(), ItemSource.INTERPARK,itemGenre,imageUrl);
         itemRepository.save(item);
     }
-    public void savePlayKfaItem(PlayKfa playKfa, ItemGenre itemGenre){
-        Item item = new Item(playKfa.getName(), playKfa.getDate(),playKfa.getRank(), ItemSource.PLAYKFA,itemGenre);
+    public void savePlayKfaItem(PlayKfa playKfa, ItemGenre itemGenre,String imageUrl){
+        Item item = new Item(playKfa.getName(), playKfa.getDate(),playKfa.getRank(), ItemSource.PLAYKFA,itemGenre,imageUrl);
         itemRepository.save(item);
     }
     public List<Item> getAllItems(){
