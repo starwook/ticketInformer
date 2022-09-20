@@ -17,6 +17,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.springframework.stereotype.Service;
 
+
 import javax.annotation.PostConstruct;
 import java.util.concurrent.TimeUnit;
 
@@ -29,23 +30,32 @@ public class TicketLinkService {
     private static final String urlImageDir = "../resources/static/image";
     private final TicketLinkRepository ticketLinkRepository;
     private final ItemService itemService;
-
     public void getTicketLinkRanking() {
         Selenium sel = new Selenium();
         WebDriver driver = sel.getDriver();
         driver.get(urlTicketLink);
         try{
-            WebElement ele = driver.findElement(By.cssSelector("#content > section.common_section.section_ranking_detail > div.common_tab.type_capsule > div > ul"));
+
             for(int i=1;i<=7;i++){
+                WebElement ele = driver.findElement(By.cssSelector("#content > section.common_section.section_ranking_detail > div.common_tab.type_capsule > div > ul"));
                 WebElement eachGenre = ele.findElement(By.cssSelector("li:nth-child("+i+") "));
-                WebElement eachButton = eachGenre.findElement(By.cssSelector("button"));
-                System.out.println(eachButton.getText());
-                eachButton.click();
-                Thread.sleep(500);
+                driver.findElement(By.cssSelector("#content > section.common_section.section_ranking_detail > div.common_tab.type_capsule > div > ul > li:nth-child("+i+") > button")).click();
+                Thread.sleep(1000);
                 String html = driver.getPageSource();
                 Document doc = Jsoup.parse(html);
                 Elements elements = doc.select("#content > section.common_section.section_ranking_detail > div.ranking_product > table > tbody");
                 for(int j=1;j<=3;j++){
+                    //getUrl
+                    WebElement eachUrl = driver.findElement(By.cssSelector("#content > section.common_section.section_ranking_detail > div.ranking_product > table > tbody >tr:nth-child("+j+") > td:nth-child(2)>div>a>span"));
+                    eachUrl.click();
+                    Thread.sleep(1000);
+                    String url = driver.getCurrentUrl();
+                    System.out.println(url);
+                    driver.navigate().back();
+                    Thread.sleep(1000);
+                    driver.findElement(By.cssSelector("#content > section.common_section.section_ranking_detail > div.common_tab.type_capsule > div > ul > li:nth-child("+i+") > button")).click();
+                    Thread.sleep(1000);
+                    //Jsoup
                     Elements eachItem = elements.select("tr:nth-child("+j+")");
                     //img Crawl
                     Elements imageElements = eachItem.select("img[class=ranking_product_img]");
@@ -60,6 +70,7 @@ public class TicketLinkService {
                         itemService.saveTicketLinkItem(ticketLink,itemGenre,imageUrl);
                     }
                 }
+
             }
         }
         catch (Exception e){
