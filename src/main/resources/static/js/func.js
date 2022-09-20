@@ -1,61 +1,17 @@
 var genre =[0,0,0,0,0,0,0,0];
+var sourceFlag ={
+    INTERPARK :0,
+    TICKETLINK:0,
+    PLAYKFA:0
+}
+var sectionNum =1;
+var genreNum=1;
+var itemArray = document.querySelector("#itemList");
+var newSection;
+var newGenre;
 function showItems(items){
-
-    var itemList = document.querySelector("#itemList");
-    var ticketLinkFlag = false;
-    var playKfaFlag = false;
-    var interParkFlag = false;
     for(let i=0;i<items.length;i++){
-        var newSection;
-        if(items[i].itemSource.toString() == "TICKETLINK"){
-            if(!ticketLinkFlag){
-                newSection =document.createElement("section");
-                var newHeader =document.createElement("h2");
-                newHeader.append(document.createTextNode("TICKETLINK"));
-                newSection.appendChild(newHeader);
-                itemList.appendChild(newSection);
-                ticketLinkFlag = true;
-                genre.fill(0);
-            }
-            // if(genreFlag(items[i].itemGenre.toString())){
-            //     var newGenre = document.createElement("h3");
-            //     newGenre.appendChild(document.createTextNode(items[i].itemGenre.toString()));
-            //     newSection.appendChild(newGenre);
-            // }
-        }
-        if(items[i].itemSource.toString() == "PLAYKFA"){
-
-            if(!playKfaFlag){
-                newSection =document.createElement("section");
-                var newHeader =document.createElement("h2");
-                newHeader.append(document.createTextNode("PLAYKFA"));
-                newSection.appendChild(newHeader);
-                itemList.appendChild(newSection);
-                playKfaFlag = true;
-                genre.fill(0);
-            }
-            // if(genreFlag(items[i].itemGenre.toString())){
-            //     var newGenre = document.createElement("h3");
-            //     newGenre.appendChild(document.createTextNode(items[i].itemGenre.toString()));
-            //     itemList.appendChild(newGenre);
-            // }
-        }
-        if(items[i].itemSource.toString() == "INTERPARK"){
-            if(!interParkFlag){
-                newSection =document.createElement("section");
-                var newHeader =document.createElement("h2");
-                newHeader.append(document.createTextNode("INTERPARK"));
-                newSection.appendChild(newHeader);
-                itemList.appendChild(newSection);
-                interParkFlag = true;
-                genre.fill(0);
-            }
-            // if(genreFlag(items[i].itemGenre.toString())){
-            //     var newGenre = document.createElement("h3");
-            //     newGenre.appendChild(document.createTextNode(items[i].itemGenre.toString()));
-            //     itemList.appendChild(newGenre);
-            // }
-        }
+        addSection(items[i].itemSource.toString(),sourceFlag[items[i].itemSource.toString()],items[i].itemGenre.toString());
         var itemName = JSON.stringify(items[i].name);
         var itemTime = JSON.stringify(items[i].date);
         var itemRank = JSON.stringify(items[i].rank)
@@ -63,25 +19,56 @@ function showItems(items){
         itemTime = itemTime.replace(/\"/g," ");
         console.log(itemName);
         var newList = document.createElement("li");
+        var imageBox = document.createElement("div");
+
+        //이미지 박스
+        imageBox.className = "imageBox";
         var imageTag = document.createElement("img");
         imageTag.src = items[i].imgUrl;
+        imageBox.appendChild(imageTag);
+        if(itemRank !=0){
+            var rank = document.createElement("div");
+            rank.className = "itemRank";
+            rank.append(document.createTextNode(itemRank));
+            imageBox.appendChild(rank);
+        }
+
 
         newList.style.listStyle ="none";
+        newList.appendChild(imageBox);
 
-        if(itemRank !=0){
-            newList.appendChild(document.createTextNode(itemRank));
-        }
-        console.log(items[i].imgUrl);
-        newList.appendChild(imageTag);
+
+
+
         newList.appendChild(document.createElement("br"));
         newList.appendChild(document.createTextNode(itemName));
         newList.appendChild(document.createElement("br"));
         newList.appendChild(document.createTextNode(itemTime));
-        newSection.appendChild(newList);
-
-
+        newGenre.appendChild(newList);
     }
-
+}
+function addSection(itemSource,flag,itemGenre){
+    if(!flag){
+        flag = true;
+        newSection =document.createElement("div");
+        newSection.className = "newSection"+sectionNum++;
+        var newHeader =document.createElement("div");
+        newHeader.className="sectionHeader";
+        newHeader.append(document.createTextNode(changeToKorean(itemSource)));
+        newSection.appendChild(newHeader);
+        itemArray.appendChild(newSection);
+        sourceFlag[itemSource] =1;
+        genre.fill(0);
+    }
+    if(genreFlag(itemGenre)){
+        newGenre = document.createElement("div");
+        newGenre.className ="newGenre"+genreNum++;
+        var newGenreHeader = document.createElement("div");
+        newGenreHeader.className ="genreHeader";
+        newGenreHeader.append(document.createTextNode(itemGenre));
+        newGenre.append(newGenreHeader);
+        newSection.appendChild(newGenre);
+    }
 }
 function genreFlag(genreName){
     if(genreName == "MUSICAL"){
@@ -147,4 +134,14 @@ function genreFlag(genreName){
         return false;
 
     }
+}
+function changeToKorean(itemSource){
+    if(itemSource=="INTERPARK"){
+        itemSource= "인터파크";
+    }
+    if(itemSource=="TICKETLINK"){
+        itemSource ="티켓링크"
+    }
+    return itemSource;
+
 }
