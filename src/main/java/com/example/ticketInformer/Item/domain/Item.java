@@ -20,12 +20,24 @@ public class Item {
     private String name;
     private int rank;
     private String imgUrl;
+    private String url;
+
+
 
     @Enumerated(EnumType.STRING)
     private ItemSource itemSource;
     @Enumerated(EnumType.STRING)
     private ItemGenre itemGenre;
 
+    public Item(String date, String name, int rank,  ItemSource itemSource, ItemGenre itemGenre,String imgUrl,String url) {
+        this.date = date;
+        this.name = name;
+        this.rank = rank;
+        this.imgUrl = imgUrl;
+        this.itemSource = itemSource;
+        this.itemGenre = itemGenre;
+        this.url = url;
+    }
     public Item(String date, String name, int rank,  ItemSource itemSource, ItemGenre itemGenre,String imgUrl) {
         this.date = date;
         this.name = name;
@@ -34,6 +46,7 @@ public class Item {
         this.itemSource = itemSource;
         this.itemGenre = itemGenre;
     }
+
 
     //    @OneToMany(mappedBy = "item", cascade = CascadeType.ALL)
 //    private List<Basket> basketList = new ArrayList<>();

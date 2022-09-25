@@ -22,8 +22,8 @@ public class ItemService {
 
     private final ItemRepository itemRepository;
 
-    public void saveTicketLinkItem(TicketLink ticketLink,ItemGenre itemGenre,String imageUrl){
-        Item item = new Item(ticketLink.getName(), ticketLink.getDate(),ticketLink.getRank(), ItemSource.TICKETLINK,itemGenre,imageUrl);
+    public void saveTicketLinkItem(TicketLink ticketLink,ItemGenre itemGenre,String imageUrl,String url){
+        Item item = new Item(ticketLink.getName(), ticketLink.getDate(),ticketLink.getRank(), ItemSource.TICKETLINK,itemGenre,imageUrl,url);
         itemRepository.save(item);
     }
     public void saveInterParkItem(InterPark interPark, ItemGenre itemGenre,String imageUrl){
