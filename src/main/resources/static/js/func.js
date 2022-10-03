@@ -70,6 +70,9 @@ function addSection(itemSource,flag,itemGenre){
         newSection.appendChild(newGenre);
     }
 }
+
+
+
 function genreFlag(genreName){
     if(genreName == "MUSICAL"){
         if(!genre[0]){

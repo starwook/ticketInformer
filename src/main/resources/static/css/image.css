@@ -21,7 +21,7 @@ li{
 div[class=itemRank]{
     position: absolute;
     top:82%;
-    left:33%;
+    left:38px;
     font-size:56px;
     font-weight: 700;
     font-family:"Roboto",-apple-system,BlinkMacSystemFont,Apple SD Gothic Neo,"Malgun Gothic",Arial,sans-serif;
@@ -52,7 +52,7 @@ div[class ^=newGenre]{
 
     position: relative;
     overflow: hidden;
-    height: auto;
+    height: 260px;
     width: 50%;
     float: left;
 }

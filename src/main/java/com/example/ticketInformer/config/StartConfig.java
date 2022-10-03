@@ -20,10 +20,8 @@ public class StartConfig implements ApplicationRunner {
     private final TicketLinkService ticketLinkService;
     @Override
     public void run(ApplicationArguments args) throws Exception{
-//        interParkService.getInterParkRanking();
-//        playKfaService.getPlayKfa();
+        interParkService.getInterParkRanking();
+        playKfaService.getPlayKfa();
         ticketLinkService.getTicketLinkRanking();
-
-
     }
 }
