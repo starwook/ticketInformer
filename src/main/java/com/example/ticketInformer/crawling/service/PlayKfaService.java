@@ -69,7 +69,7 @@ public class PlayKfaService {
             PlayKfa playKfa = new PlayKfa(name,when,0);
             playKfaRepository.save(playKfa);
             ItemGenre itemGenre = ItemGenre.SPORTS;
-            itemService.savePlayKfaItem(playKfa,itemGenre,imageUrl);
+            itemService.savePlayKfaItem(playKfa,itemGenre,imageUrl,urlPlayKfa);
         }
     }
 }

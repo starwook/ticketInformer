@@ -29,7 +29,7 @@ public class Item {
     @Enumerated(EnumType.STRING)
     private ItemGenre itemGenre;
 
-    public Item(String date, String name, int rank,  ItemSource itemSource, ItemGenre itemGenre,String imgUrl,String url) {
+    public Item(String name,String date,  int rank,  ItemSource itemSource, ItemGenre itemGenre,String imgUrl,String url) {
         this.date = date;
         this.name = name;
         this.rank = rank;
@@ -38,7 +38,7 @@ public class Item {
         this.itemGenre = itemGenre;
         this.url = url;
     }
-    public Item(String date, String name, int rank,  ItemSource itemSource, ItemGenre itemGenre,String imgUrl) {
+    public Item( String name,String date, int rank,  ItemSource itemSource, ItemGenre itemGenre,String imgUrl) {
         this.date = date;
         this.name = name;
         this.rank = rank;
@@ -65,6 +65,5 @@ public class Item {
         this.date = date;
         this.rank = rank;
         this.itemSource = itemSource;
-
     }
 }

@@ -26,12 +26,12 @@ public class ItemService {
         Item item = new Item(ticketLink.getName(), ticketLink.getDate(),ticketLink.getRank(), ItemSource.TICKETLINK,itemGenre,imageUrl,url);
         itemRepository.save(item);
     }
-    public void saveInterParkItem(InterPark interPark, ItemGenre itemGenre,String imageUrl){
-        Item item = new Item(interPark.getName(), interPark.getDate(),interPark.getRank(), ItemSource.INTERPARK,itemGenre,imageUrl);
+    public void saveInterParkItem(InterPark interPark, ItemGenre itemGenre,String imageUrl,String url){
+        Item item = new Item(interPark.getName(), interPark.getDate(),interPark.getRank(), ItemSource.INTERPARK,itemGenre,imageUrl,url);
         itemRepository.save(item);
     }
-    public void savePlayKfaItem(PlayKfa playKfa, ItemGenre itemGenre,String imageUrl){
-        Item item = new Item(playKfa.getName(), playKfa.getDate(),playKfa.getRank(), ItemSource.PLAYKFA,itemGenre,imageUrl);
+    public void savePlayKfaItem(PlayKfa playKfa, ItemGenre itemGenre,String imageUrl,String url){
+        Item item = new Item(playKfa.getName(), playKfa.getDate(),playKfa.getRank(), ItemSource.PLAYKFA,itemGenre,imageUrl,url);
         itemRepository.save(item);
     }
     public List<Item> getAllItems(){

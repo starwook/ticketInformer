@@ -47,7 +47,7 @@ public class InterParkService {
                     String time = eachItem.select("a[class=prdDuration]").text();
                     InterPark interPark = new InterPark(name,time,j);
                     interParkRepository.save(interPark);
-                    itemService.saveInterParkItem(interPark, itemGenre,imageUrl);
+                    itemService.saveInterParkItem(interPark, itemGenre,imageUrl,urlInterPark);
                 }
 
             }
