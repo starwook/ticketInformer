@@ -1,5 +1,6 @@
 package com.example.ticketInformer.Item.domain;
 
+import com.example.ticketInformer.entity.BaseTimeEntity;
 import lombok.Getter;
 //import com.example.ticketInformer.basket.domain.Basket;
 
@@ -9,7 +10,7 @@ import java.util.List;
 
 @Entity
 @Getter
-public class Item {
+public class Item extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
