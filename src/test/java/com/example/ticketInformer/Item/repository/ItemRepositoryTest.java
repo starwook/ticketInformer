@@ -14,7 +14,6 @@ import static org.junit.jupiter.api.Assertions.*;
 class ItemRepositoryTest {
     @Autowired
     ItemRepository itemRepository;
-
     @Test
     public void showDate(){
         List<Item> items =itemRepository.findAll();
