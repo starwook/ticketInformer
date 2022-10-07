@@ -3,10 +3,7 @@ package com.example.ticketInformer.crawling.domain;
 
 import lombok.Getter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Getter
@@ -17,7 +14,8 @@ public class PlayKfa {
     private Long id;
     private String name;
     private String date;
-    private int rank;
+
+    private int playKfaRank;
 
     public  PlayKfa(){
 
@@ -25,6 +23,6 @@ public class PlayKfa {
     public PlayKfa(String name, String date, int rank) {
         this.name = name;
         this.date = date;
-        this.rank = rank;
+        this.playKfaRank = rank;
     }
 }

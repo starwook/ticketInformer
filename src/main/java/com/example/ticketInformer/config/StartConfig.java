@@ -1,9 +1,9 @@
 package com.example.ticketInformer.config;
 
-import com.example.ticketInformer.crawling.domain.PlayKfa;
 import com.example.ticketInformer.crawling.service.InterParkService;
 import com.example.ticketInformer.crawling.service.PlayKfaService;
 
+import com.example.ticketInformer.crawling.domain.PlayKfa;
 import com.example.ticketInformer.crawling.service.TicketLinkService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.ApplicationArguments;
@@ -20,8 +20,8 @@ public class StartConfig implements ApplicationRunner {
     private final TicketLinkService ticketLinkService;
     @Override
     public void run(ApplicationArguments args) throws Exception{
-//        interParkService.getInterParkRanking();
+        interParkService.getInterParkRanking();
 //        playKfaService.getPlayKfa();
-        ticketLinkService.getTicketLinkRanking();
+//        ticketLinkService.getTicketLinkRanking();
     }
 }

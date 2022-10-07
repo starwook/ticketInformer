@@ -1,11 +1,9 @@
-package com.example.ticketInformer.user.domain;
+package com.example.ticketInformer.member.domain;
 
 import lombok.Getter;
 //import com.example.ticketInformer.basket.domain.Basket;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Getter

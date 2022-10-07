@@ -5,8 +5,6 @@ import lombok.Getter;
 //import com.example.ticketInformer.basket.domain.Basket;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Getter
@@ -17,9 +15,9 @@ public class Item extends BaseTimeEntity {
     @Column(name = "item_id")
     private Long id;
 
-    private String date;
-    private String name;
-    private int rank;
+    private String itemDate;
+    private String itemName;
+    private int itemRank;
     private String imgUrl;
     private String url;
 
@@ -30,19 +28,19 @@ public class Item extends BaseTimeEntity {
     @Enumerated(EnumType.STRING)
     private ItemGenre itemGenre;
 
-    public Item(String name,String date,  int rank,  ItemSource itemSource, ItemGenre itemGenre,String imgUrl,String url) {
-        this.date = date;
-        this.name = name;
-        this.rank = rank;
+    public Item(String itemName, String itemDate, int itemRank, ItemSource itemSource, ItemGenre itemGenre, String imgUrl, String url) {
+        this.itemDate = itemDate;
+        this.itemName = itemName;
+        this.itemRank = itemRank;
         this.imgUrl = imgUrl;
         this.itemSource = itemSource;
         this.itemGenre = itemGenre;
         this.url = url;
     }
-    public Item( String name,String date, int rank,  ItemSource itemSource, ItemGenre itemGenre,String imgUrl) {
-        this.date = date;
-        this.name = name;
-        this.rank = rank;
+    public Item(String itemName, String itemDate, int itemRank, ItemSource itemSource, ItemGenre itemGenre, String imgUrl) {
+        this.itemDate = itemDate;
+        this.itemName = itemName;
+        this.itemRank = itemRank;
         this.imgUrl = imgUrl;
         this.itemSource = itemSource;
         this.itemGenre = itemGenre;
@@ -54,17 +52,17 @@ public class Item extends BaseTimeEntity {
     public Item(){
 
     }
-    public Item( String name,String date, int rank, ItemSource itemSource,ItemGenre itemGenre) {
-        this.name = name;
-        this.date = date;
-        this.rank = rank;
+    public Item(String itemName, String itemDate, int itemRank, ItemSource itemSource, ItemGenre itemGenre) {
+        this.itemName = itemName;
+        this.itemDate = itemDate;
+        this.itemRank = itemRank;
         this.itemSource = itemSource;
         this.itemGenre =itemGenre;
     }
-    public Item( String name,String date, int rank, ItemSource itemSource) {
-        this.name = name;
-        this.date = date;
-        this.rank = rank;
+    public Item(String itemName, String itemDate, int itemRank, ItemSource itemSource) {
+        this.itemName = itemName;
+        this.itemDate = itemDate;
+        this.itemRank = itemRank;
         this.itemSource = itemSource;
     }
 }
