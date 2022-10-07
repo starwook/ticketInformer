@@ -1,4 +1,4 @@
-package com.example.ticketInformer.user.service;
+package com.example.ticketInformer.member.service;
 
 
 import lombok.RequiredArgsConstructor;

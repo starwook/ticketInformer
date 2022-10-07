@@ -3,10 +3,7 @@ package com.example.ticketInformer.crawling.domain;
 
 import lombok.Getter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Getter
@@ -18,14 +15,14 @@ public class InterPark {
 
     private String name;
     private String date;
-    private int rank;
+    private int interParkRank;
     public InterPark(){
 
     }
 
-    public InterPark(String name, String date, int rank) {
+    public InterPark(String name, String date, int interParkRank) {
         this.name = name;
         this.date = date;
-        this.rank = rank;
+        this.interParkRank = interParkRank;
     }
 }
