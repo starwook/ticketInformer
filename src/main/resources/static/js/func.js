@@ -12,9 +12,9 @@ var newGenre;
 function showItems(items){
     for(let i=0;i<items.length;i++){
         addSection(items[i].itemSource.toString(),sourceFlag[items[i].itemSource.toString()],items[i].itemGenre.toString());
-        var itemName = JSON.stringify(items[i].name);
-        var itemTime = JSON.stringify(items[i].date);
-        var itemRank = JSON.stringify(items[i].rank)
+        var itemName = JSON.stringify(items[i].itemName);
+        var itemTime = JSON.stringify(items[i].itemDate);
+        var itemRank = JSON.stringify(items[i].itemRank);
         itemName = itemName.replace(/\"/g," ");
         itemTime = itemTime.replace(/\"/g," ");
         console.log(itemName);
