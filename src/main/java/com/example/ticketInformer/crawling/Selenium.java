@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
 public class Selenium {
     private WebDriver driver;
     public static String WEB_DRIVER_ID="webdriver.chrome.driver";
-    public static String WEB_DRIVER_PATH= "src/main/java/com/example/ticketInformer/crawling/chromedriver"; //""; 서로바꾸기 ///usr/bin/chromedriver
+    public static String WEB_DRIVER_PATH= "/usr/bin/chromedriver";//"src/main/java/com/example/ticketInformer/crawling/chromedriver"; //""; 서로바꾸기 //
     public Selenium(){
         System.setProperty(WEB_DRIVER_ID,WEB_DRIVER_PATH);
         ChromeOptions options = new ChromeOptions();
